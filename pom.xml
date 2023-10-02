@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- region Your particular project data -->
+    <groupId>org.white_sdev.samples</groupId>
+    <artifactId>web-scrapper</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>A web scrapper sample</description>
+    <!-- This section (packaging) can be defined if the project is meant to be a desktop application or a JAR will be generated. -->
+    <packaging>jar</packaging>
+    <!--endregion-->
+
+    <properties>
+        <!-- region Configure Java version & Main full package and class name -->
+        <!-- WARNING: add release scope if 1.9 and older versions are used at build/plugins/plugin/[maven-compiler-plugin]/configuration-->
+        <java.version>19</java.version>
+        <main.class>${project.groupId}.WebScrapper</main.class>
+        <!--endregion-->
+        <!-- region General configurations of the project -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- region White_SeleniumFramework + bonigarcia-webdriver-->
+        <!-- region bonigarcia WebDriverManager -->
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <!--suppress VulnerableLibrariesLocal -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.3.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-http-jdk-client</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>commons-io</groupId>-->
+        <!--            <artifactId>commons-io</artifactId>-->
+        <!--            <version>2.11.0</version>-->
+        <!--        </dependency>-->
+
+        <!-- endregion Selenium-Jupiter -->
+
+        <!--endregion White_SeleniumFramework + bonigarcia-webdriver-->
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- region Established the java version defined in the properties' section for every scope (compatible with newer java versions) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <!-- WARNING: add release property for 1.9 and older versions -->
+                    <release>${java.version}</release>
+                </configuration>
+            </plugin>
+            <!-- endregion -->
+        </plugins>
+    </build>
+
+</project>
