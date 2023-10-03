@@ -30,8 +30,8 @@ public class WebScrapper {
                     .findElement(By.xpath("//*/h3//a[@data-id='4711387121009']"))
                     .getText();
 
-            driver.findElement(By.xpath("//*/div[@class='product__item__information__view-details js-details-block']/a[@data-id='4711387121009']"))
-                    .click();
+            driver.findElement(By.xpath("//*/div[@class='product__item__information__view-details js-details-block']/a[@data-id='4711387121009']"));
+
 
             driver.quit();
             System.out.println("Finish - productName:" + productName + ", price:" + price);
